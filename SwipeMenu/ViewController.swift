@@ -8,18 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SwipeMenuDelegate {
+
+
+    @IBOutlet weak var swipeMenu: SwipeMenu!
+    let titles      = ["りんご","ばなな","ぶどう","みかん"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.swipeMenu?.delegate = self
+        self.swipeMenu.titles = titles
+        self.view.addSubview(self.swipeMenu!)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func scrollPageChenged(page: Int) {
+        print("ページ変更:", page)
     }
-
 
 }
-
